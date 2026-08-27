@@ -1,0 +1,18 @@
+public class DataDrivenTest {
+    @Test(dataProvider="loginData")
+    public void loginTest(String user, String pass){
+        driver.findElement(By.id("user-name")).sendKeys(user);
+        driver.findElement(By.id("password")).sendKeys(pass);
+        driver.findElement(By.id("login-button")).click();
+    }
+
+    @DataProvider(name="loginData")
+    public Object[][] getData() throws IOException {
+        // Read from Excel using Apache POI
+        return new Object[][] {
+            {"standard_user", "secret_sauce"},
+            {"locked_out_user", "secret_sauce"},
+            {"problem_user", "secret_sauce"}
+        };
+    }
+}
