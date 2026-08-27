@@ -1,0 +1,11 @@
+@Test
+public void handleAlerts(){
+    driver.get("https://demoqa.com/alerts");
+    driver.findElement(By.id("alertButton")).click();
+    Alert alert = driver.switchTo().alert();
+    System.out.println(alert.getText());
+    alert.accept();
+
+    driver.findElement(By.id("confirmButton")).click();
+    driver.switchTo().alert().dismiss();
+}
