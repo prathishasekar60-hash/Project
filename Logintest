@@ -1,0 +1,10 @@
+public class LoginTest extends Base {
+    @Test
+    public void validLogin(){
+        setup();
+        LoginPage lp = new LoginPage(driver);
+        lp.login("standard_user", "secret_sauce");
+        Assert.assertTrue(driver.getCurrentUrl().contains("inventory"));
+        driver.quit();
+    }
+}
