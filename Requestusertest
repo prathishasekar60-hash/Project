@@ -1,0 +1,13 @@
+@Test
+public void registerUserTest(){
+    driver.get("https://automationexercise.com/");
+    driver.findElement(By.xpath("//a[contains(text(),'Signup')]")).click();
+    driver.findElement(By.name("name")).sendKeys("TestUser");
+    driver.findElement(By.xpath("//input[@data-qa='signup-email']")).sendKeys("test"+System.currentTimeMillis()+"@test.com");
+    driver.findElement(By.xpath("//button[@data-qa='signup-button']")).click();
+    // Fill form...
+    driver.findElement(By.id("id_gender1")).click();
+    driver.findElement(By.id("password")).sendKeys("Test@123");
+    driver.findElement(By.xpath("//button[@data-qa='create-account']")).click();
+    Assert.assertTrue(driver.getPageSource().contains("ACCOUNT CREATED"));
+}
